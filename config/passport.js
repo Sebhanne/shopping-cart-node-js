@@ -9,8 +9,8 @@ passport.deserializeUser(function(id, done) {
     User.findById(id, function(err, user) {
      done(err, user);
     });
-});
-//middleware
+}); //allows passport to store my user in the session and retrieve the users
+//middleware or new strategy
 passport.use("local.signup", new LocalStrategy({
     usernameField: "email",
     passwordField: "password",

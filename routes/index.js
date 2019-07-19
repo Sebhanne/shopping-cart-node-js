@@ -26,21 +26,23 @@ router.get("/", function(req, res, next) {
 });
 
 router.get("/user/signup", function(req, res, next) {
-  res.render("user/signup", {csrfToken: req.csrfToken()});
+  // var message = req.flash("error");
+  res.render("user/signup", { csrfToken: req.csrfToken() });
 });
-router.post("/user/signup", passport.authenticate("local.signup", { //middleware connected to passport .js
-   successRedirect: "/profile", //tell passport to redirect to success
-   failureRedirect:"/signup", //otherwise redirect to signup
-   failureFlash: true // will flash the message you set up in passport.js "Email" or the flash that we installed 
-}));
+router.post(
+  "/user/signup",
+  passport.authenticate("local.signup", {
+    //middleware connected to passport .js
+    successRedirect: "/profile", //tell passport to redirect to success
+    failureRedirect: "/signup", //otherwise redirect to signup
+    failureFlash: true // will flash the message you set up in passport.js "Email" or the flash that we installed
+  })
+);
 router.get("/profile", function(req, res, next) {
   res.render("user/profile");
 });
 
-
 // router.post("/user/signup", function(req, res, next) {
 //   res.redirect("/"); //change this routes toconnect to passport.js
 
-
 module.exports = router;
-
