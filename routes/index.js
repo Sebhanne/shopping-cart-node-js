@@ -26,19 +26,19 @@ router.get("/", function(req, res, next) {
 });
 
 router.get("/user/signup", function(req, res, next) {
-  // var message = req.flash("error");
-  res.render("user/signup", { csrfToken: req.csrfToken() });
+  var messages = req.flash("error");
+  res.render("user/signup", { csrfToken: req.csrfToken(), messages: messages, hasErrors: messages.length > 0 });
 });
 router.post(
   "/user/signup",
   passport.authenticate("local.signup", {
     //middleware connected to passport .js
-    successRedirect: "/profile", //tell passport to redirect to success
-    failureRedirect: "/signup", //otherwise redirect to signup
+    successRedirect: "/user/profile", //tell passport to redirect to success
+    failureRedirect: "/user/signup", //otherwise redirect to signup
     failureFlash: true // will flash the message you set up in passport.js "Email" or the flash that we installed
-  })
-);
-router.get("/profile", function(req, res, next) {
+  }));
+
+router.get("/user/profile", function(req, res, next) {
   res.render("user/profile");
 });
 

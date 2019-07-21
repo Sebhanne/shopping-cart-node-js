@@ -3,12 +3,14 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+var bodyParser = require("body-parser");
 var expressHbs = require("express-handlebars");
 var mongoose = require("mongoose");
 var session = require("express-session");
 var passport = require("passport"); // passport
 var flash = require("connect-flash"); //passport
-
+var validator = require("express-validator");
+var validator = require("validator");
 var indexRouter = require("./routes/index");
 
 var app = express();
@@ -24,8 +26,9 @@ app.engine(".hbs", expressHbs({ defaultLayout: "layout", extname: ".hbs" }));
 app.set("view engine", ".hbs");
 
 app.use(logger("dev"));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(validator());
 app.use(cookieParser());
 app.use(
   session({ secret: "mysupersecret", resave: false, saveUninitialized: false })
