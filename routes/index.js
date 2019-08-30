@@ -24,33 +24,37 @@ router.get("/", function(req, res, next) {
       products: productChunks
     });
   });
+});
 
 router.get("/add-to-cart/:id", function(req, res, next) {
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {});
 
-  Product.findById(productId, function(err, product) { // use mongoose to take the product
+  Product.findById(productId, function(err, product) {
+    // use mongoose to take the product
     if (err) {
       return res.redirect("/");
     }
-     cart.add(product, product.id);
-     req.session.cart = cart;
-     console.log(req.session.cart);
-     res.redirect("/");
+    cart.add(product, product.id);
+    req.session.cart = cart;
+    console.log(req.session.cart);
+    res.redirect("/");
   });
 });
 router.get("/shopping-cart", function(req, res, next) {
   if (!req.session.cart) {
-     return res.render("shop/shopping-cart", {products: null});
+    return res.render("shop/shopping-cart", { products: null });
   }
   var cart = new Cart(req.session.cart);
-  res.render("shop/shopping-cart", { products: cart.generateArray(), totalPrice: cart.totalPrice });
-
+  res.render("shop/shopping-cart", {
+    products: cart.generateArray(),
+    totalPrice: cart.totalPrice
+  });
 });
-  
+
 router.get("/user/signup", function(req, res, next) {
   // var message = req.flash("error");
-  res.render("user/signup", { csrfToken: req.csrfToken()});
+  res.render("user/signup", { csrfToken: req.csrfToken() });
 });
 router.post(
   "/user/signup",
@@ -69,5 +73,3 @@ router.get("/profile", function(req, res, next) {
 //   res.redirect("/"); //change this routes toconnect to passport.js
 
 module.exports = router;
-
-
