@@ -2,7 +2,7 @@
 
 <div class="row">
     {{# each this }}
-    <div class="col-sm-6 col-md-4">
+    <div class="col-sm-5 col-md-4">
         <div class="thumbnail">
             <img src="{{ this.imagePath }}" alt=" ..." class="img-responsive">
             <div class="caption">
@@ -10,7 +10,8 @@
                 <p class="description">{{ this.description }}</p>
                 <div class="clearfix">
                     <div class="price pull-left">${{ this.price }}</div>
-                    <a href="/add-to-cart/{{this._id}}" class="btn btn-success float-right" role="button">Add to shopping cart</a>
+                    <a href="/add-to-cart/{{this._id}}" class="btn btn-success float-right" role="button">Add to
+                        shopping cart</a>
                 </div>
             </div>
         </div>
