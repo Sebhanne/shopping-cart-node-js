@@ -9,38 +9,38 @@ mongoose.connect("mongodb://localhost:27017/shopping", {
 var product = [
   new Product({
     imagePath: "images/1.jpg",
-    title: "watch",
-    description: "Awesome watch!!",
+    title: "Cakes",
+    description: "Awesome Cakes!!",
     price: 10
   }),
   new Product({
     imagePath: "images/2.jpg",
-    title: "watch",
-    description: "Awesome watch!!",
+    title: "Cakes",
+    description: "Awesome Cakes!!",
     price: 20
   }),
   new Product({
-    imagePath: "images/3.jpg",
-    title: "watch",
-    description: "Awesome watch!!",
+    imagePath: "images/7.jpg",
+    title: "Cakes",
+    description: "Awesome Cakes!!",
     price: 30
   }),
   new Product({
     imagePath: "images/4.jpg",
-    title: "watch",
-    description: "Awesome watch!!",
+    title: "Cakes",
+    description: "Awesome Cakes!!",
     price: 40
   }),
   new Product({
     imagePath: "images/5.jpg",
-    title: "watch",
-    description: "Awesome watch!!",
+    title: "Cakes",
+    description: "Awesome Cakes!!",
     price: 50
   }),
   new Product({
     imagePath: "images/6.jpg",
-    title: "watch",
-    description: "Awesome watch!!",
+    title: "Cakes",
+    description: "Awesome Cakes!!",
     price: 60
   })
 ];
