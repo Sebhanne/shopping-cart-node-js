@@ -1,5 +1,5 @@
 .thumbnail img {
-  max-height: 25px;
+  max-height: 300px;
 }
 .thumbnail .description {
   color: #7f7f7f;
@@ -10,5 +10,5 @@
 }
 
 .img-responsive {
-  size: 15px;
+  size: 75px;
 }
